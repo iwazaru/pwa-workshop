@@ -7,5 +7,11 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-    // console.log(event);
+    if (event.request.url.endsWith('.jpeg')) {
+        event.respondWith(
+            fetch('/assets/lolcat.jpg').then(response => {
+                return response;
+            })
+        );
+    }
 });
