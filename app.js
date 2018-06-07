@@ -48,3 +48,25 @@ form.addEventListener('change', (e) => {
 
   makePlayer(filters);
 });
+
+let deferredPrompt;
+
+const installButton = document.getElementById('installButton');
+installButton.style.display = 'none';
+
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredPrompt = event;
+  installButton.style.display = 'block';
+});
+
+installButton.addEventListener('click', async event => {
+  installButton.style.display = 'none';
+  deferredPrompt.prompt();
+  const choiceResult = deferredPrompt.userChoice;
+  if (choiceResult.outcome === 'accepted') {
+    console.log('User has accepted install');
+  } else {
+    console.log('User has refused install');
+  }
+});
