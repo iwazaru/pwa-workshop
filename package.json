@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress --host 0.0.0.0"
   },
   "license": "Apache-2.0",
   "devDependencies": {
